@@ -3,21 +3,74 @@ url: https://raw.githubusercontent.com/api-evangelist/dagshub/refs/heads/main/ap
 name: DagsHub
 x-type: company
 description: >-
-  DagsHub is a GitHub-like platform for ML and data teams. Combines code, data (DVC), experiments (MLflow), and labeling in one repository view.
+  DagsHub is a GitHub-like platform for ML and data teams that combines code, data
+  (DVC), experiments (MLflow), and labeling. It exposes a Gitea-compatible REST API for
+  repository operations plus DagsHub-specific endpoints for data and experiments.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - ML
   - MLOps
-  - Versioning
-  - DVC
+  - Data Versioning
+  - Git
   - MLflow
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: dagshub:dagshub-rest-api
+    name: DagsHub REST API
+    humanURL: https://dagshub.com/docs/reference/api/
+    baseURL: https://dagshub.com/api/v1
+    tags:
+      - REST
+      - Repos
+      - Issues
+      - Branches
+    description: >-
+      DagsHub's primary REST API mirrors the Gitea API for repositories, issues, pulls,
+      branches, and users, with DagsHub-specific extensions for data, experiments, and
+      annotations. Token-based authentication.
+    properties:
+      - type: Documentation
+        url: https://dagshub.com/docs/reference/api/
+      - type: Authentication
+        url: https://dagshub.com/docs/reference/api/authentication/
+  - aid: dagshub:dagshub-mlflow
+    name: DagsHub MLflow Tracking Endpoint
+    humanURL: https://dagshub.com/docs/integration_guide/mlflow_tracking/
+    baseURL: https://dagshub.com/{user}/{repo}.mlflow
+    tags:
+      - MLflow
+      - Experiment Tracking
+    description: >-
+      Each DagsHub repo provides a hosted MLflow tracking server endpoint. Point
+      `MLFLOW_TRACKING_URI` at the repo's `.mlflow` URL and authenticate with a token.
+    properties:
+      - type: Documentation
+        url: https://dagshub.com/docs/integration_guide/mlflow_tracking/
+  - aid: dagshub:dagshub-dvc-remote
+    name: DagsHub DVC / S3-Compatible Storage
+    humanURL: https://dagshub.com/docs/integration_guide/dvc/
+    baseURL: https://dagshub.com/{user}/{repo}.dvc
+    tags:
+      - DVC
+      - Storage
+      - S3 Compatible
+    description: >-
+      DagsHub provides a DVC remote and S3-compatible storage endpoint per repo for
+      versioned data and model artifacts.
+    properties:
+      - type: Documentation
+        url: https://dagshub.com/docs/integration_guide/dvc/
 common:
   - type: Website
     url: https://dagshub.com/
+  - type: Portal
+    url: https://dagshub.com/docs/
+  - type: Pricing
+    url: https://dagshub.com/pricing
+  - type: GitHubOrganization
+    url: https://github.com/DagsHub
   - type: Plans
     url: plans/dagshub-plans-pricing.yml
   - type: RateLimits
