@@ -1,7 +1,7 @@
 aid: dagshub
 url: https://raw.githubusercontent.com/api-evangelist/dagshub/refs/heads/main/apis.yml
 name: DagsHub
-x-type: company
+kind: company
 description: >-
   DagsHub is a GitHub-like platform for ML and data teams that combines code, data
   (DVC), experiments (MLflow), and labeling. It exposes a Gitea-compatible REST API for
