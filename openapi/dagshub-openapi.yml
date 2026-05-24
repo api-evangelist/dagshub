@@ -1,0 +1,412 @@
+openapi: 3.1.0
+info:
+  title: DagsHub REST API
+  description: >-
+    DagsHub's REST API mirrors the Gitea API for repositories, issues, pull
+    requests, branches, and users, with DagsHub-specific extensions for data
+    storage (DVC/S3), data engine queries, and storage integrations.
+    Authenticates with an API token via Bearer header or basic auth.
+  version: "1.0.0"
+servers:
+  - url: https://dagshub.com/api/v1
+    description: DagsHub REST API base URL
+security:
+  - bearerAuth: []
+  - basicAuth: []
+tags:
+  - name: User
+  - name: Users
+  - name: Repos
+  - name: Branches
+  - name: Issues
+  - name: PullRequests
+  - name: Orgs
+  - name: Storage
+paths:
+  /version:
+    get:
+      tags: [User]
+      summary: Get API version
+      responses:
+        '200': { description: Version info }
+  /user:
+    get:
+      tags: [User]
+      summary: Get the authenticated user
+      responses:
+        '200': { description: User }
+  /user/repos:
+    get:
+      tags: [User]
+      summary: List repositories owned by the authenticated user
+      responses:
+        '200': { description: Repositories }
+    post:
+      tags: [User]
+      summary: Create a repository for the authenticated user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+                description: { type: string }
+                private: { type: boolean }
+                auto_init: { type: boolean }
+      responses:
+        '201': { description: Repository created }
+  /users/{username}:
+    get:
+      tags: [Users]
+      summary: Get a user by username
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: User }
+  /users/{username}/repos:
+    get:
+      tags: [Users]
+      summary: List repositories for a user
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Repositories }
+  /repos/{owner}/{repo}:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Repos]
+      summary: Get repository metadata
+      responses:
+        '200': { description: Repository }
+    delete:
+      tags: [Repos]
+      summary: Delete a repository
+      responses:
+        '204': { description: Deleted }
+  /repos/{owner}/{repo}/branches:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Branches]
+      summary: List branches in a repository
+      responses:
+        '200': { description: Branches }
+  /repos/{owner}/{repo}/branches/{branch}:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+      - in: path
+        name: branch
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Branches]
+      summary: Get a branch
+      responses:
+        '200': { description: Branch }
+  /repos/{owner}/{repo}/contents/{path}:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+      - in: path
+        name: path
+        required: true
+        schema: { type: string }
+      - in: query
+        name: ref
+        schema: { type: string }
+    get:
+      tags: [Repos]
+      summary: Get file or directory contents
+      responses:
+        '200': { description: Contents }
+  /repos/{owner}/{repo}/issues:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Issues]
+      summary: List issues for a repository
+      parameters:
+        - in: query
+          name: state
+          schema: { type: string, enum: [open, closed, all] }
+        - in: query
+          name: page
+          schema: { type: integer }
+      responses:
+        '200': { description: Issues }
+    post:
+      tags: [Issues]
+      summary: Create an issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title]
+              properties:
+                title: { type: string }
+                body: { type: string }
+                labels:
+                  type: array
+                  items: { type: string }
+                assignees:
+                  type: array
+                  items: { type: string }
+      responses:
+        '201': { description: Issue }
+  /repos/{owner}/{repo}/issues/{index}:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+      - in: path
+        name: index
+        required: true
+        schema: { type: integer }
+    get:
+      tags: [Issues]
+      summary: Get an issue
+      responses:
+        '200': { description: Issue }
+    patch:
+      tags: [Issues]
+      summary: Edit an issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: { type: string }
+                body: { type: string }
+                state: { type: string, enum: [open, closed] }
+      responses:
+        '200': { description: Updated }
+  /repos/{owner}/{repo}/issues/{index}/comments:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+      - in: path
+        name: index
+        required: true
+        schema: { type: integer }
+    get:
+      tags: [Issues]
+      summary: List comments on an issue
+      responses:
+        '200': { description: Comments }
+    post:
+      tags: [Issues]
+      summary: Add a comment to an issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [body]
+              properties:
+                body: { type: string }
+      responses:
+        '201': { description: Comment }
+  /repos/{owner}/{repo}/pulls:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+    get:
+      tags: [PullRequests]
+      summary: List pull requests
+      responses:
+        '200': { description: Pull requests }
+    post:
+      tags: [PullRequests]
+      summary: Create a pull request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title, head, base]
+              properties:
+                title: { type: string }
+                body: { type: string }
+                head: { type: string }
+                base: { type: string }
+      responses:
+        '201': { description: Pull request }
+  /repos/{owner}/{repo}/pulls/{index}:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+      - in: path
+        name: index
+        required: true
+        schema: { type: integer }
+    get:
+      tags: [PullRequests]
+      summary: Get a pull request
+      responses:
+        '200': { description: Pull request }
+    patch:
+      tags: [PullRequests]
+      summary: Edit a pull request
+      requestBody:
+        content:
+          application/json:
+            schema: { type: object }
+      responses:
+        '200': { description: Updated }
+  /repos/{owner}/{repo}/storage:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Storage]
+      summary: List storage integrations (DVC, S3) for a repository
+      responses:
+        '200': { description: Storage list }
+  /repos/{owner}/{repo}/storage/{provider}/{name}:
+    parameters:
+      - in: path
+        name: owner
+        required: true
+        schema: { type: string }
+      - in: path
+        name: repo
+        required: true
+        schema: { type: string }
+      - in: path
+        name: provider
+        required: true
+        schema: { type: string }
+      - in: path
+        name: name
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Storage]
+      summary: List contents of a storage integration
+      responses:
+        '200': { description: Storage contents }
+  /orgs/{org}:
+    get:
+      tags: [Orgs]
+      summary: Get an organization
+      parameters:
+        - in: path
+          name: org
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Organization }
+  /orgs/{org}/repos:
+    get:
+      tags: [Orgs]
+      summary: List organization repositories
+      parameters:
+        - in: path
+          name: org
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Repositories }
+    post:
+      tags: [Orgs]
+      summary: Create a repository in an organization
+      parameters:
+        - in: path
+          name: org
+          required: true
+          schema: { type: string }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+                private: { type: boolean }
+      responses:
+        '201': { description: Repository }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: DagsHub access token sent as a Bearer token.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Username and DagsHub access token via HTTP Basic auth.
