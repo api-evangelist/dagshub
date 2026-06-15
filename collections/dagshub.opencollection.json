@@ -1,0 +1,698 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DagsHub REST API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/version"
+          },
+          "docs": "Get API version"
+        },
+        {
+          "info": {
+            "name": "Get the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/user"
+          },
+          "docs": "Get the authenticated user"
+        },
+        {
+          "info": {
+            "name": "List repositories owned by the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/user/repos"
+          },
+          "docs": "List repositories owned by the authenticated user"
+        },
+        {
+          "info": {
+            "name": "Create a repository for the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dagshub.com/api/v1/user/repos",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a repository for the authenticated user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a user by username",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/users/:username",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a user by username"
+        },
+        {
+          "info": {
+            "name": "List repositories for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/users/:username/repos",
+            "params": [
+              {
+                "name": "username",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List repositories for a user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Repos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get repository metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository metadata"
+        },
+        {
+          "info": {
+            "name": "Delete a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a repository"
+        },
+        {
+          "info": {
+            "name": "Get file or directory contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/contents/:path",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ref",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get file or directory contents"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Branches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List branches in a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/branches",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List branches in a repository"
+        },
+        {
+          "info": {
+            "name": "Get a branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/branches/:branch",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a branch"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Issues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List issues for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/issues",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List issues for a repository"
+        },
+        {
+          "info": {
+            "name": "Create an issue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/issues",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an issue"
+        },
+        {
+          "info": {
+            "name": "Get an issue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/issues/:index",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an issue"
+        },
+        {
+          "info": {
+            "name": "Edit an issue",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/issues/:index",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit an issue"
+        },
+        {
+          "info": {
+            "name": "List comments on an issue",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/issues/:index/comments",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List comments on an issue"
+        },
+        {
+          "info": {
+            "name": "Add a comment to an issue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/issues/:index/comments",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a comment to an issue"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "PullRequests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pull requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List pull requests"
+        },
+        {
+          "info": {
+            "name": "Create a pull request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a pull request"
+        },
+        {
+          "info": {
+            "name": "Get a pull request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls/:index",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a pull request"
+        },
+        {
+          "info": {
+            "name": "Edit a pull request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls/:index",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a pull request"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List storage integrations (DVC, S3) for a repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/storage",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List storage integrations (DVC, S3) for a repository"
+        },
+        {
+          "info": {
+            "name": "List contents of a storage integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/storage/:provider/:name",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List contents of a storage integration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orgs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/orgs/:org",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an organization"
+        },
+        {
+          "info": {
+            "name": "List organization repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/orgs/:org/repos",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List organization repositories"
+        },
+        {
+          "info": {
+            "name": "Create a repository in an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dagshub.com/api/v1/orgs/:org/repos",
+            "params": [
+              {
+                "name": "org",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a repository in an organization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
