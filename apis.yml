@@ -6,7 +6,7 @@ description: >-
   DagsHub is a GitHub-like platform for ML and data teams that combines code, data
   (DVC), experiments (MLflow), and labeling. It exposes a Gitea-compatible REST API for
   repository operations plus DagsHub-specific endpoints for data and experiments.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - ML
   - MLOps
