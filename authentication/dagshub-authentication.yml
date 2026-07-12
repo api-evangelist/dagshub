@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/dagshub-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: DagsHub access token sent as a Bearer token.
+  sources:
+  - openapi/dagshub-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Username and DagsHub access token via HTTP Basic auth.
+  sources:
+  - openapi/dagshub-openapi.yml

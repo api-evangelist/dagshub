@@ -63,6 +63,10 @@ apis:
       - type: Documentation
         url: https://dagshub.com/docs/integration_guide/dvc/
 common:
+  - type: DomainSecurity
+    url: security/dagshub-domain-security.yml
+  - type: Authentication
+    url: authentication/dagshub-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/dagshub
   - type: Website
@@ -79,6 +83,8 @@ common:
     url: rate-limits/dagshub-rate-limits.yml
   - type: FinOps
     url: finops/dagshub-finops.yml
+  - url: https://dagshub.com/blog/feed/
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
