@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: DagsHub REST Branches API
+  description: DagsHub's REST API mirrors the Gitea API for repositories, issues, pull requests, branches, and users, with DagsHub-specific extensions for data storage (DVC/S3), data engine queries, and storage integrations. Authenticates with an API token via Bearer header or basic auth.
+  version: 1.0.0
+servers:
+- url: https://dagshub.com/api/v1
+  description: DagsHub REST API base URL
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Branches
+paths:
+  /repos/{owner}/{repo}/branches:
+    parameters:
+    - in: path
+      name: owner
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: repo
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Branches
+      summary: List branches in a repository
+      responses:
+        '200':
+          description: Branches
+  /repos/{owner}/{repo}/branches/{branch}:
+    parameters:
+    - in: path
+      name: owner
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: repo
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: branch
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Branches
+      summary: Get a branch
+      responses:
+        '200':
+          description: Branch
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: DagsHub access token sent as a Bearer token.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Username and DagsHub access token via HTTP Basic auth.

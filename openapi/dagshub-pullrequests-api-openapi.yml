@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: DagsHub REST Branches PullRequests API
+  description: DagsHub's REST API mirrors the Gitea API for repositories, issues, pull requests, branches, and users, with DagsHub-specific extensions for data storage (DVC/S3), data engine queries, and storage integrations. Authenticates with an API token via Bearer header or basic auth.
+  version: 1.0.0
+servers:
+- url: https://dagshub.com/api/v1
+  description: DagsHub REST API base URL
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: PullRequests
+paths:
+  /repos/{owner}/{repo}/pulls:
+    parameters:
+    - in: path
+      name: owner
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: repo
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - PullRequests
+      summary: List pull requests
+      responses:
+        '200':
+          description: Pull requests
+    post:
+      tags:
+      - PullRequests
+      summary: Create a pull request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - title
+              - head
+              - base
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                head:
+                  type: string
+                base:
+                  type: string
+      responses:
+        '201':
+          description: Pull request
+  /repos/{owner}/{repo}/pulls/{index}:
+    parameters:
+    - in: path
+      name: owner
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: repo
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: index
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - PullRequests
+      summary: Get a pull request
+      responses:
+        '200':
+          description: Pull request
+    patch:
+      tags:
+      - PullRequests
+      summary: Edit a pull request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Updated
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: DagsHub access token sent as a Bearer token.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Username and DagsHub access token via HTTP Basic auth.

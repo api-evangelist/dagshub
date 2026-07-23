@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: DagsHub REST Branches Issues API
+  description: DagsHub's REST API mirrors the Gitea API for repositories, issues, pull requests, branches, and users, with DagsHub-specific extensions for data storage (DVC/S3), data engine queries, and storage integrations. Authenticates with an API token via Bearer header or basic auth.
+  version: 1.0.0
+servers:
+- url: https://dagshub.com/api/v1
+  description: DagsHub REST API base URL
+security:
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: Issues
+paths:
+  /repos/{owner}/{repo}/issues:
+    parameters:
+    - in: path
+      name: owner
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: repo
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Issues
+      summary: List issues for a repository
+      parameters:
+      - in: query
+        name: state
+        schema:
+          type: string
+          enum:
+          - open
+          - closed
+          - all
+      - in: query
+        name: page
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Issues
+    post:
+      tags:
+      - Issues
+      summary: Create an issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - title
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                labels:
+                  type: array
+                  items:
+                    type: string
+                assignees:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '201':
+          description: Issue
+  /repos/{owner}/{repo}/issues/{index}:
+    parameters:
+    - in: path
+      name: owner
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: repo
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: index
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Issues
+      summary: Get an issue
+      responses:
+        '200':
+          description: Issue
+    patch:
+      tags:
+      - Issues
+      summary: Edit an issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                state:
+                  type: string
+                  enum:
+                  - open
+                  - closed
+      responses:
+        '200':
+          description: Updated
+  /repos/{owner}/{repo}/issues/{index}/comments:
+    parameters:
+    - in: path
+      name: owner
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: repo
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: index
+      required: true
+      schema:
+        type: integer
+    get:
+      tags:
+      - Issues
+      summary: List comments on an issue
+      responses:
+        '200':
+          description: Comments
+    post:
+      tags:
+      - Issues
+      summary: Add a comment to an issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - body
+              properties:
+                body:
+                  type: string
+      responses:
+        '201':
+          description: Comment
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: DagsHub access token sent as a Bearer token.
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Username and DagsHub access token via HTTP Basic auth.
