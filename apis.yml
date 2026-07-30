@@ -6,7 +6,20 @@ description: >-
   DagsHub is a GitHub-like platform for ML and data teams that combines code, data
   (DVC), experiments (MLflow), and labeling. It exposes a Gitea-compatible REST API for
   repository operations plus DagsHub-specific endpoints for data and experiments.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dagshub.png
 tags:
   - ML
   - MLOps
@@ -17,51 +30,130 @@ created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-  - aid: dagshub:dagshub-rest-api
-    name: DagsHub REST API
-    humanURL: https://dagshub.com/docs/reference/api/
-    baseURL: https://dagshub.com/api/v1
-    tags:
-      - REST
-      - Repos
-      - Issues
-      - Branches
-    description: >-
-      DagsHub's primary REST API mirrors the Gitea API for repositories, issues, pulls,
-      branches, and users, with DagsHub-specific extensions for data, experiments, and
-      annotations. Token-based authentication.
-    properties:
-      - type: Documentation
-        url: https://dagshub.com/docs/reference/api/
-      - type: Authentication
-        url: https://dagshub.com/docs/reference/api/authentication/
-  - aid: dagshub:dagshub-mlflow
-    name: DagsHub MLflow Tracking Endpoint
-    humanURL: https://dagshub.com/docs/integration_guide/mlflow_tracking/
-    baseURL: https://dagshub.com/{user}/{repo}.mlflow
-    tags:
-      - MLflow
-      - Experiment Tracking
-    description: >-
-      Each DagsHub repo provides a hosted MLflow tracking server endpoint. Point
-      `MLFLOW_TRACKING_URI` at the repo's `.mlflow` URL and authenticate with a token.
-    properties:
-      - type: Documentation
-        url: https://dagshub.com/docs/integration_guide/mlflow_tracking/
-  - aid: dagshub:dagshub-dvc-remote
-    name: DagsHub DVC / S3-Compatible Storage
-    humanURL: https://dagshub.com/docs/integration_guide/dvc/
-    baseURL: https://dagshub.com/{user}/{repo}.dvc
-    tags:
-      - DVC
-      - Storage
-      - S3 Compatible
-    description: >-
-      DagsHub provides a DVC remote and S3-compatible storage endpoint per repo for
-      versioned data and model artifacts.
-    properties:
-      - type: Documentation
-        url: https://dagshub.com/docs/integration_guide/dvc/
+- aid: dagshub:dagshub-rest-api
+  name: DagsHub REST API
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - REST
+  - Repos
+  - Issues
+  - Branches
+  description: >-
+    DagsHub's primary REST API mirrors the Gitea API for repositories, issues, pulls, branches, and users,
+    with DagsHub-specific extensions for data, experiments, and annotations. Token-based authentication.
+  properties:
+  - type: Documentation
+    url: https://dagshub.com/docs/reference/api/
+  - type: Authentication
+    url: https://dagshub.com/docs/reference/api/authentication/
+- aid: dagshub:dagshub-mlflow
+  name: DagsHub MLflow Tracking Endpoint
+  humanURL: https://dagshub.com/docs/integration_guide/mlflow_tracking/
+  baseURL: https://dagshub.com/{user}/{repo}.mlflow
+  tags:
+  - MLflow
+  - Experiment Tracking
+  description: >-
+    Each DagsHub repo provides a hosted MLflow tracking server endpoint. Point `MLFLOW_TRACKING_URI` at
+    the repo's `.mlflow` URL and authenticate with a token.
+  properties:
+  - type: Documentation
+    url: https://dagshub.com/docs/integration_guide/mlflow_tracking/
+- aid: dagshub:dagshub-dvc-remote
+  name: DagsHub DVC / S3-Compatible Storage
+  humanURL: https://dagshub.com/docs/integration_guide/dvc/
+  baseURL: https://dagshub.com/{user}/{repo}.dvc
+  tags:
+  - DVC
+  - Storage
+  - S3 Compatible
+  description: >-
+    DagsHub provides a DVC remote and S3-compatible storage endpoint per repo for versioned data and model
+    artifacts.
+  properties:
+  - type: Documentation
+    url: https://dagshub.com/docs/integration_guide/dvc/
+- aid: dagshub:dagshub-branches-api
+  name: DagsHub Branches API
+  description: The Branches API from DagsHub — 2 operation(s) for branches.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - Branches
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-branches-api-openapi.yml
+- aid: dagshub:dagshub-issues-api
+  name: DagsHub Issues API
+  description: The Issues API from DagsHub — 3 operation(s) for issues.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - Issues
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-issues-api-openapi.yml
+- aid: dagshub:dagshub-orgs-api
+  name: DagsHub Orgs API
+  description: The Orgs API from DagsHub — 2 operation(s) for orgs.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-orgs-api-openapi.yml
+- aid: dagshub:dagshub-pullrequests-api
+  name: DagsHub PullRequests API
+  description: The PullRequests API from DagsHub — 2 operation(s) for pullrequests.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - PullRequests
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-pullrequests-api-openapi.yml
+- aid: dagshub:dagshub-repos-api
+  name: DagsHub Repos API
+  description: The Repos API from DagsHub — 2 operation(s) for repos.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - Repos
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-repos-api-openapi.yml
+- aid: dagshub:dagshub-storage-api
+  name: DagsHub Storage API
+  description: The Storage API from DagsHub — 2 operation(s) for storage.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - Storage
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-storage-api-openapi.yml
+- aid: dagshub:dagshub-user-api
+  name: DagsHub User API
+  description: The User API from DagsHub — 3 operation(s) for user.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-user-api-openapi.yml
+- aid: dagshub:dagshub-users-api
+  name: DagsHub Users API
+  description: The Users API from DagsHub — 2 operation(s) for users.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-users-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/dagshub-agentic-access.yml
