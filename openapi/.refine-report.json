@@ -1,0 +1,28 @@
+{
+  "provider": "dagshub",
+  "sources": [
+    "dagshub-branches-api-openapi.yml",
+    "dagshub-issues-api-openapi.yml",
+    "dagshub-orgs-api-openapi.yml",
+    "dagshub-pullrequests-api-openapi.yml",
+    "dagshub-repos-api-openapi.yml",
+    "dagshub-storage-api-openapi.yml",
+    "dagshub-user-api-openapi.yml",
+    "dagshub-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "dagshub-branches-api-openapi.yml",
+    "dagshub-issues-api-openapi.yml",
+    "dagshub-orgs-api-openapi.yml",
+    "dagshub-pullrequests-api-openapi.yml",
+    "dagshub-repos-api-openapi.yml",
+    "dagshub-storage-api-openapi.yml",
+    "dagshub-user-api-openapi.yml",
+    "dagshub-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
