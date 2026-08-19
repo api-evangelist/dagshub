@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DagsHub REST Branches PullRequests API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "PullRequests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List pull requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List pull requests"
+        },
+        {
+          "info": {
+            "name": "Create a pull request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a pull request"
+        },
+        {
+          "info": {
+            "name": "Get a pull request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls/:index",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a pull request"
+        },
+        {
+          "info": {
+            "name": "Edit a pull request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://dagshub.com/api/v1/repos/:owner/:repo/pulls/:index",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a pull request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DagsHub REST Branches User API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/version"
+          },
+          "docs": "Get API version"
+        },
+        {
+          "info": {
+            "name": "Get the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/user"
+          },
+          "docs": "Get the authenticated user"
+        },
+        {
+          "info": {
+            "name": "List repositories owned by the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://dagshub.com/api/v1/user/repos"
+          },
+          "docs": "List repositories owned by the authenticated user"
+        },
+        {
+          "info": {
+            "name": "Create a repository for the authenticated user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://dagshub.com/api/v1/user/repos",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a repository for the authenticated user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
