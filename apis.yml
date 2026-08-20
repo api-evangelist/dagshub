@@ -100,6 +100,8 @@ apis:
   humanURL: https://dagshub.com/docs/reference/api/
   baseURL: https://dagshub.com/api/v1
   tags:
+  - Organization
+  tags_raw:
   - Orgs
   properties:
   - type: OpenAPI
@@ -110,6 +112,8 @@ apis:
   humanURL: https://dagshub.com/docs/reference/api/
   baseURL: https://dagshub.com/api/v1
   tags:
+  - Pull Requests
+  tags_raw:
   - PullRequests
   properties:
   - type: OpenAPI
@@ -150,6 +154,8 @@ apis:
   humanURL: https://dagshub.com/docs/reference/api/
   baseURL: https://dagshub.com/api/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
