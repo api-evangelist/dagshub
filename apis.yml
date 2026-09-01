@@ -124,7 +124,7 @@ apis:
   humanURL: https://dagshub.com/docs/reference/api/
   baseURL: https://dagshub.com/api/v1
   tags:
-  - PullRequests
+  - Pull Requests
   tags_raw:
   - PullRequests
   properties:
