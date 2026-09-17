@@ -119,18 +119,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/dagshub-orgs-api-openapi.yml
-- aid: dagshub:dagshub-pullrequests-api
-  name: DagsHub PullRequests API
-  description: The PullRequests API from DagsHub — 2 operation(s) for pullrequests.
-  humanURL: https://dagshub.com/docs/reference/api/
-  baseURL: https://dagshub.com/api/v1
-  tags:
-  - Pull Requests
-  tags_raw:
-  - PullRequests
-  properties:
-  - type: OpenAPI
-    url: openapi/dagshub-pullrequests-api-openapi.yml
 - aid: dagshub:dagshub-repos-api
   name: DagsHub Repos API
   description: The Repos API from DagsHub — 2 operation(s) for repos.
@@ -173,6 +161,16 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/dagshub-users-api-openapi.yml
+- aid: dagshub:dagshub-pull-requests-api
+  name: DagsHub Pull Requests API
+  description: The Pull Requests API from DagsHub — 2 operation(s) for pull requests.
+  humanURL: https://dagshub.com/docs/reference/api/
+  baseURL: https://dagshub.com/api/v1
+  tags:
+  - Pull Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/dagshub-pull-requests-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/dagshub-agentic-access.yml
