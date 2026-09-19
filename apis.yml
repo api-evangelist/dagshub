@@ -34,6 +34,12 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dagshub.png
 tags:
+  - Machine-Learning
+  - MLOps
+  - Data Versioning
+  - Git
+  - MLflow
+tags_raw:
   - ML
   - MLOps
   - Data Versioning
