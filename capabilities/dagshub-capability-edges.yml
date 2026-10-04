@@ -1,0 +1,41 @@
+slug: dagshub
+provider: DagsHub
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Pull Requests
+  spec_file: dagshub-pull-requests-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.85
+  evidence: POST /repos/{owner}/{repo}/pulls "Create a pull request"; PATCH ... "Edit a pull request"
+  reason: Pull-request lifecycle is the code-review discipline explicitly named in Software Construction
+    Management.
+- tag: Branches
+  spec_file: dagshub-branches-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.8
+  evidence: GET /repos/{owner}/{repo}/branches "List branches in a repository"
+  reason: Git branch listing within repositories is source-control practice, which sits under Software
+    Construction Management ("source control, code review").
+- tag: Repos
+  spec_file: dagshub-repos-api-openapi.yml
+  capability_id: BC-4200.40
+  capability_id_l1: BC-4200
+  capability_name: Software Construction Management
+  confidence: 0.78
+  evidence: GET /repos/{owner}/{repo} "Get repository metadata"; "Get file or directory contents"
+  reason: Repository and file-content operations are source-control management of the codebase.
