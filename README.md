@@ -1,4 +1,4 @@
-# DagsHub (dagshub)
+# DagsHub
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,93 +66,133 @@
 
 DagsHub is a GitHub-like platform for ML and data teams that combines code, data (DVC), experiments (MLflow), and labeling. It exposes a Gitea-compatible REST API for repository operations plus DagsHub-specific endpoints for data and experiments.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/dagshub/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/dagshub/refs/heads/main/apis.yml)
+**Areas:** Machine Learning · MLOps · Data Versioning · Git · MLflow
 
-## Tags
+## DagsHub on APIs.io
 
-- ML
-- MLOps
-- Data Versioning
-- Git
-- MLflow
+Everything profiled for DagsHub is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/dagshub/](https://apis.io/providers/dagshub/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (11)
 
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-08
+- [DagsHub REST API](https://apis.io/apis/dagshub/dagshub-rest-api/) — DagsHub's primary REST API mirrors the Gitea API for repositories, issues, pulls, branches, and users, with DagsHub-specific extensions for data,…
+- [DagsHub MLflow Tracking Endpoint](https://apis.io/apis/dagshub/dagshub-mlflow/) — Each DagsHub repo provides a hosted MLflow tracking server endpoint. Point `MLFLOW_TRACKING_URI` at the repo's `.mlflow` URL and authenticate with a token.
+- [DagsHub DVC / S3-Compatible Storage](https://apis.io/apis/dagshub/dagshub-dvc-remote/) — DagsHub provides a DVC remote and S3-compatible storage endpoint per repo for versioned data and model artifacts.
+- [DagsHub Branches API](https://apis.io/apis/dagshub/dagshub-branches-api/) — The Branches API from DagsHub — 2 operation(s) for branches.
+- [DagsHub Issues API](https://apis.io/apis/dagshub/dagshub-issues-api/) — The Issues API from DagsHub — 3 operation(s) for issues.
+- [DagsHub Orgs API](https://apis.io/apis/dagshub/dagshub-orgs-api/) — The Orgs API from DagsHub — 2 operation(s) for orgs.
+- [DagsHub Repos API](https://apis.io/apis/dagshub/dagshub-repos-api/) — The Repos API from DagsHub — 2 operation(s) for repos.
+- [DagsHub Storage API](https://apis.io/apis/dagshub/dagshub-storage-api/) — The Storage API from DagsHub — 2 operation(s) for storage.
+- [DagsHub User API](https://apis.io/apis/dagshub/dagshub-user-api/) — The User API from DagsHub — 3 operation(s) for user.
+- [DagsHub Users API](https://apis.io/apis/dagshub/dagshub-users-api/) — The Users API from DagsHub — 2 operation(s) for users.
+- [DagsHub Pull Requests API](https://apis.io/apis/dagshub/dagshub-pull-requests-api/) — The Pull Requests API from DagsHub — 2 operation(s) for pull requests.
 
-## APIs
+### Published properties
 
-### DagsHub REST API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-DagsHub's primary REST API mirrors the Gitea API for repositories, issues, pulls, branches, and users, with DagsHub-specific extensions for data, experiments, and annotations. Token-based authentication.
+#### Agentic access (1)
 
-- **Human URL:** [https://dagshub.com/docs/reference/api/](https://dagshub.com/docs/reference/api/)
-- **Base URL:** `https://dagshub.com/api/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Dagshub Agentic Access](https://apis.io/agentic-access/dagshub/dagshub-agentic-access/)
 
-- REST
-- Repos
-- Issues
-- Branches
+#### Collections (9)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://dagshub.com/docs/reference/api/)
-- [Authentication](https://dagshub.com/docs/reference/api/authentication/)
-- [Postman Collection](collections/dagshub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dagshub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [DagsHub REST API](https://apis.io/collections/dagshub/open-dagshub/)
+- [DagsHub REST Branches API](https://apis.io/collections/dagshub/open-dagshub-branches-api/)
+- [DagsHub REST Branches Issues API](https://apis.io/collections/dagshub/open-dagshub-issues-api/)
+- [DagsHub REST Branches Orgs API](https://apis.io/collections/dagshub/open-dagshub-orgs-api/)
+- [DagsHub REST Branches PullRequests API](https://apis.io/collections/dagshub/open-dagshub-pullrequests-api/)
+- [DagsHub REST Branches Repos API](https://apis.io/collections/dagshub/open-dagshub-repos-api/)
+- [DagsHub REST Branches Storage API](https://apis.io/collections/dagshub/open-dagshub-storage-api/)
+- [DagsHub REST Branches User API](https://apis.io/collections/dagshub/open-dagshub-user-api/)
+- [DagsHub REST Branches Users API](https://apis.io/collections/dagshub/open-dagshub-users-api/)
 
-### DagsHub MLflow Tracking Endpoint
+#### Security (2)
 
-Each DagsHub repo provides a hosted MLflow tracking server endpoint. Point `MLFLOW_TRACKING_URI` at the repo's `.mlflow` URL and authenticate with a token.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://dagshub.com/docs/integration_guide/mlflow_tracking/](https://dagshub.com/docs/integration_guide/mlflow_tracking/)
-- **Base URL:** `https://dagshub.com/{user}/{repo}.mlflow`
+- [Dagshub Authentication](https://apis.io/security/dagshub/dagshub-authentication/)
+- [Dagshub Domain Security](https://apis.io/security/dagshub/dagshub-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- MLflow
-- Experiment Tracking
+Published plans, tiers and prices.
 
-#### Properties
+- [Dagshub Plans Pricing](https://apis.io/plans/dagshub/dagshub-plans-pricing/)
 
-- [Documentation](https://dagshub.com/docs/integration_guide/mlflow_tracking/)
-- [Postman Collection](collections/dagshub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dagshub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### DagsHub DVC / S3-Compatible Storage
+Published request limits.
 
-DagsHub provides a DVC remote and S3-compatible storage endpoint per repo for versioned data and model artifacts.
+- [Dagshub Rate Limits](https://apis.io/rate-limits/dagshub/dagshub-rate-limits/)
 
-- **Human URL:** [https://dagshub.com/docs/integration_guide/dvc/](https://dagshub.com/docs/integration_guide/dvc/)
-- **Base URL:** `https://dagshub.com/{user}/{repo}.dvc`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- DVC
-- Storage
-- S3 Compatible
+- [Dagshub Finops](https://apis.io/finops/dagshub/dagshub-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://dagshub.com/docs/integration_guide/dvc/)
-- [Postman Collection](collections/dagshub.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/dagshub.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/dagshub)
 - [Website](https://dagshub.com/)
-- [Portal](https://dagshub.com/docs/)
 - [Pricing](https://dagshub.com/pricing)
-- [GitHub Organization](https://github.com/DagsHub)
-- [Plans](plans/dagshub-plans-pricing.yml)
-- [Rate Limits](rate-limits/dagshub-rate-limits.yml)
-- [Fin Ops](finops/dagshub-finops.yml)
+- [Blog](https://dagshub.com/blog/feed/)
+- [GitHub](https://github.com/DagsHub)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 24.5** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 42.9 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 15.8 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/dagshub/](https://apis.io/providers/dagshub/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DagsHub: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/dagshub/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
